@@ -1,0 +1,92 @@
+# Dependencies
+node_modules/
+vendor/
+venv/
+.env/
+.venv/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.nuxt/
+.output/
+public/build/
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Laravel / PHP
+/storage/*.key
+/bootstrap/cache/*.php
+.phpunit.result.cache
+
+# Database / local data
+*.sqlite
+*.sqlite3
+database/*.sqlite
+database/*.sqlite3
+*.db
+
+# Uploads / generated files
+uploads/
+tmp/
+temp/
+.cache/
+
+# Package lock files - keep these if you want reproducible installs
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+# composer.lock
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Testing / coverage
+coverage/
+test-results/
+playwright-report/
+
+# Docker
+.docker/
+docker-compose.override.yml
