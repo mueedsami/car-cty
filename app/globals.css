@@ -54,3 +54,30 @@ canvas {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.city-shell {
+  isolation: isolate;
+}
+
+.city-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 12;
+  background:
+    radial-gradient(circle at 50% 46%, transparent 0 46%, rgba(0,0,0,0.18) 78%, rgba(0,0,0,0.5) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.035), transparent 20%, transparent 70%, rgba(255,255,255,0.02));
+  mix-blend-mode: normal;
+}
+
+.building-label,
+.parking-label {
+  text-shadow: 0 1px 12px rgba(0,0,0,.8);
+}
+
+@media (max-width: 768px) {
+  .city-shell {
+    min-height: 100svh;
+  }
+}

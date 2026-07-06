@@ -1864,57 +1864,43 @@ export default function CityDrive() {
         </div>
       )}
 
-      <div className="pointer-events-none absolute left-4 top-24 z-10 w-[min(400px,calc(100vw-2rem))] rounded-[1.5rem] border border-white/10 bg-[#05070d]/45 p-5 shadow-[0_24px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:left-6">
+      <div className="pointer-events-none absolute left-4 top-24 z-10 w-[min(410px,calc(100vw-2rem))] rounded-[1.45rem] border border-white/10 bg-[#05070d]/36 p-4 shadow-[0_24px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:left-6">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-[#f6f388]">
+            <p className="text-[10px] uppercase tracking-[0.32em] text-[#f6f388]">
               Mueed City OS
             </p>
-            <h2 className="mt-1.5 text-lg font-black leading-tight tracking-[-0.03em]">
+            <h2 className="mt-2 text-lg font-black tracking-[-0.04em]">
               Realistic night drive
             </h2>
           </div>
-          <span className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold tabular-nums text-white/55">
+          <span className="rounded-full border border-white/10 px-3 py-1 text-[10px] font-bold text-white/60">
             v5.3
           </span>
         </div>
-
-        <div className="mt-4 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
-          <span>Route progress</span>
-          <span className="tabular-nums text-white/55">{Math.round(progress * 100)}%</span>
-        </div>
-        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+        <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#f6f388] via-cyan-300 to-purple-300 transition-[width] duration-300 ease-out"
+            className="h-full rounded-full bg-gradient-to-r from-[#f6f388] via-cyan-300 to-purple-300"
             style={{ width: `${Math.max(4, progress * 100)}%` }}
           />
         </div>
-
-        <p className="mt-4 text-xs leading-relaxed text-white/50">
-          Every major building has its own parking bay. Stop beside one to unlock its story — puzzle bays sit beside selected roads.
+        <p className="mt-3 text-xs leading-5 text-white/55">
+          Every major building has its own parking bay. Stop beside a building to unlock its exact story; puzzle bays still appear beside selected roads.
         </p>
-
-        <div className="mt-4 h-px w-full bg-white/10" />
-
-        <p className="mt-3 min-h-[1.1rem] text-xs font-bold text-[#f6f388]">
-          {nearby ? `Now entering: ${nearby.title}` : "Drive toward a lit building to begin"}
-        </p>
+        {nearby && (
+          <p className="mt-3 text-xs font-bold text-[#f6f388]">
+            Now entering: {nearby.title}
+          </p>
+        )}
       </div>
 
-      <div className="absolute right-4 top-24 z-10 w-44 overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#05070d]/50 p-3 shadow-[0_24px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:right-6 md:w-56">
-        <div className="mb-2 flex items-center justify-between px-0.5">
-          <p className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/40">Live map</p>
-          <span className="flex items-center gap-1.5 text-[9px] font-bold text-white/40">
-            <span className="h-1.5 w-1.5 rounded-full border border-white bg-cyan-300" />
-            You
-          </span>
-        </div>
-        <div className="relative h-20 w-full overflow-hidden rounded-[0.85rem] border border-white/5 bg-[#07101d] md:h-24">
+      <div className="absolute right-4 top-24 z-10 h-32 w-56 overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#05070d]/42 p-3 shadow-[0_24px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:right-6">
+        <div className="relative h-full w-full rounded-[1rem] bg-[#07101d]">
           <MiniRoad road={roadPaths[0]} />
           {checkpoints.map((point) => (
             <span
               key={point.id}
-              className="absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f6f388] shadow-glow"
+              className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f6f388] shadow-glow"
               style={{
                 left: `${(point.x / WORLD.width) * 100}%`,
                 top: `${(point.y / WORLD.height) * 100}%`,
@@ -1922,30 +1908,25 @@ export default function CityDrive() {
             />
           ))}
           <span
-            className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-cyan-300 shadow-cyan"
+            className="absolute h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-cyan-300 shadow-cyan"
             style={{ left: `${minimap.x * 100}%`, top: `${minimap.y * 100}%` }}
           />
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-[#05070d]/55 p-1.5 shadow-[0_28px_100px_rgba(0,0,0,0.50)] backdrop-blur-2xl md:flex">
+      <div className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-[#05070d]/48 p-2 shadow-[0_28px_100px_rgba(0,0,0,0.50)] backdrop-blur-2xl md:flex">
         <button
           onClick={toggleTour}
-          className={`rounded-full px-5 py-3 text-xs font-black transition ${
-            autoTour
-              ? "bg-[#f6f388]/15 text-[#f6f388]"
-              : "border border-white/10 bg-white/10 text-white/75 hover:border-[#f6f388]/40 hover:text-[#f6f388]"
-          }`}
+          className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-xs font-black text-white/80 transition hover:border-[#f6f388]/50 hover:text-[#f6f388]"
         >
           {autoTour ? "Stop Guided Drive" : "Guided Drive"}
         </button>
         <button
           onClick={() => setCinematic((value) => !value)}
-          className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-xs font-black text-white/75 transition hover:border-[#f6f388]/40 hover:text-[#f6f388]"
+          className="rounded-full border border-white/10 bg-white/10 px-5 py-3 text-xs font-black text-white/80 transition hover:border-[#f6f388]/50 hover:text-[#f6f388]"
         >
           {cinematic ? "Wide Camera" : "Cinematic Camera"}
         </button>
-        <div className="h-6 w-px bg-white/10" />
         <a
           href="#classic"
           className="rounded-full bg-[#f6f388] px-5 py-3 text-xs font-black text-black shadow-glow transition hover:scale-[1.02]"
@@ -3494,23 +3475,6 @@ function drawHeroCar(
   ctx.restore();
 }
 
-function roundedRectPath(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number,
-) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.arcTo(x + w, y, x + w, y + h, r);
-  ctx.arcTo(x + w, y + h, x, y + h, r);
-  ctx.arcTo(x, y + h, x, y, r);
-  ctx.arcTo(x, y, x + w, y, r);
-  ctx.closePath();
-}
-
 function drawHudCanvas(
   ctx: CanvasRenderingContext2D,
   width: number,
@@ -3522,76 +3486,27 @@ function drawHudCanvas(
   parkedZone: ParkingZone | null,
 ) {
   ctx.save();
-
-  const compact = width < 720;
-  const barH = compact ? 40 : 46;
-  const barY = height - barH - (compact ? 14 : 22);
-  const barW = Math.min(width - 32, compact ? width - 32 : 760);
-  const barX = (width - barW) / 2;
-  const accent = parkedZone ? parkedZone.color : "rgba(246,243,136,0.92)";
-
-  // Background pill
-  roundedRectPath(ctx, barX, barY, barW, barH, barH / 2);
-  ctx.fillStyle = "rgba(4,6,12,0.52)";
-  ctx.fill();
-  ctx.lineWidth = 1;
-  ctx.strokeStyle = "rgba(255,255,255,0.10)";
-  ctx.stroke();
-
-  ctx.font = compact
-    ? "600 11px ui-sans-serif, system-ui"
-    : "600 12px ui-sans-serif, system-ui";
-  ctx.textBaseline = "middle";
-  const midY = barY + barH / 2;
-  const padX = compact ? 16 : 22;
-
-  // Speed chip (left)
+  ctx.fillStyle = "rgba(255,255,255,0.42)";
+  ctx.font = "12px ui-sans-serif, system-ui";
   ctx.textAlign = "left";
-  ctx.fillStyle = "rgba(255,255,255,0.85)";
-  ctx.fillText(`${Math.round(Math.abs(speed))}`, barX + padX, midY);
-  const speedWidth = ctx.measureText(`${Math.round(Math.abs(speed))}`).width;
-  ctx.fillStyle = "rgba(255,255,255,0.40)";
-  ctx.font = compact
-    ? "600 8px ui-sans-serif, system-ui"
-    : "600 9px ui-sans-serif, system-ui";
-  ctx.fillText("KM/H", barX + padX + speedWidth + 6, midY);
-
-  // Divider after speed chip
-  const dividerX = barX + padX + speedWidth + (compact ? 40 : 52);
-  ctx.strokeStyle = "rgba(255,255,255,0.14)";
-  ctx.beginPath();
-  ctx.moveTo(dividerX, barY + 10);
-  ctx.lineTo(dividerX, barY + barH - 10);
-  ctx.stroke();
-
-  // Center status (hidden on very small screens to avoid crowding)
-  if (!compact) {
-    ctx.font = "600 11px ui-sans-serif, system-ui";
-    ctx.textAlign = "center";
-    ctx.fillStyle = parkedZone ? accent : "rgba(255,255,255,0.42)";
+  ctx.fillText(`Speed ${Math.round(Math.abs(speed))}`, 24, height - 30);
+  ctx.textAlign = "center";
+  ctx.fillStyle = parkedZone ? parkedZone.color : "rgba(255,255,255,0.32)";
+  ctx.fillText(
+    parkedZone
+      ? `Parked at ${parkedZone.title}`
+      : `${autoTour ? "Guided drive" : "Manual drive"} · ${cinematic ? "cinematic camera" : "wide camera"} · ${profile.name}`,
+    width / 2,
+    height - 30,
+  );
+  if (nearest) {
+    ctx.fillStyle = parkedZone ? parkedZone.color : "rgba(246,243,136,0.86)";
+    ctx.textAlign = "right";
     ctx.fillText(
-      parkedZone
-        ? `Parked at ${parkedZone.title}`
-        : `${autoTour ? "Guided drive" : "Manual drive"} · ${cinematic ? "Cinematic" : "Wide"} camera`,
-      barX + barW / 2 + 14,
-      midY,
+      parkedZone ? "Parking unlocked" : `Roadside chapter: ${nearest.title}`,
+      width - 24,
+      height - 30,
     );
   }
-
-  // Right chapter chip
-  if (nearest || parkedZone) {
-    ctx.font = compact
-      ? "600 10px ui-sans-serif, system-ui"
-      : "600 11px ui-sans-serif, system-ui";
-    ctx.textAlign = "right";
-    ctx.fillStyle = accent;
-    const label = parkedZone
-      ? "Parking unlocked"
-      : compact
-        ? nearest!.title
-        : `Roadside: ${nearest!.title}`;
-    ctx.fillText(label, barX + barW - padX, midY);
-  }
-
   ctx.restore();
 }

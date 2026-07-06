@@ -1,21 +1,23 @@
-# Mueed City Portfolio — Phase 5.3 Building-Level Parking
+# Mueed City Portfolio — Phase 6.7 Fixed Start + Real Left Lane
 
-An interactive portfolio where visitors drive through a cinematic virtual city instead of scrolling.
+A cinematic 3D portfolio city built with Next.js, React Three Fiber, Drei, and Three.js.
 
-## Phase 5.3 focused upgrade
+## Phase 6.7 fixes
 
-- Added a **separate parking bay for every named building** in the city.
-- Each building parking bay now unlocks that building's own details: project, role, life chapter, research direction, leadership work, or future plan.
-- Kept puzzle parking bays beside selected roads.
-- Parking labels are now less cluttered: nearby parking bays reveal readable names, distant bays stay subtle.
-- Project buildings like Errum, Deshio, ABCD Braille Trainer, Digital Shelf, and The Positive One now have specific parking cards instead of only one generic parking area per district.
+This update directly fixes the broken starting scene from Phase 6.6.
 
-## Previous upgrades retained
-
-- Realistic night city map with wider roads, stretched districts, buildings, parks, harbor, minimap, guided drive, and mobile controls.
-- Project details appear through intentional parking interactions, while broad story panels remain embedded inside the city.
-- Puzzle bays ask small workflow/HCI/supply-chain questions and show feedback.
-- Car speed remains tuned for controlled parking.
+- Removed the giant start/finish board that was blocking the camera at launch.
+- Rebuilt the start gate as a small overhead roadside arch, so it no longer covers the car view.
+- Changed the lap to a clear clockwise left-lane route:
+  - start on the top road
+  - drive forward/east
+  - car begins in the actual left lane
+  - buildings and parking bays sit on the driver’s left side
+- Fixed mirrored sign text by making story labels camera-facing instead of backside-facing 3D HTML.
+- Repositioned buildings, parking zones, story signs, and puzzle bays around the outside-left shoulder of the loop.
+- Moved the start point away from parking bays so no story popup opens immediately.
+- Adjusted the driver camera higher/farther back so the start view is clean and readable.
+- Kept the full cycle map: the route still starts and ends near Origin Gate.
 
 ## Run locally
 
@@ -26,28 +28,29 @@ npm run dev
 
 Open:
 
-```bash
+```text
 http://localhost:3000
 ```
 
-## Controls
-
-- Arrow keys / WASD: drive
-- Slow down and stop inside a glowing parking bay to unlock that building's card
-- T: guided drive
-- C: toggle cinematic / wide camera
-- Mobile: on-screen controls
-
-## Main files
-
-- `components/CityDrive.tsx` — city engine, roads, buildings, cars, all building parking zones, puzzle zones, and driving controls
-- `data/profile.ts` — profile, project, and checkpoint/story data
-- `components/ClassicPortfolio.tsx` — normal quick portfolio section
-
-## Build check
-
-Production build passed with:
+## Build
 
 ```bash
 npm run build
 ```
+
+## Important files
+
+```text
+components/MueedCity3D.tsx   # main 3D city experience
+components/ClassicPortfolio.tsx
+components/TopNav.tsx
+data/profile.ts
+```
+
+## Controls
+
+- `W` / `ArrowUp`: accelerate
+- `S` / `ArrowDown`: reverse / brake
+- `A` / `ArrowLeft`: steer left
+- `D` / `ArrowRight`: steer right
+- Stop inside a glowing parking bay to unlock a story.
